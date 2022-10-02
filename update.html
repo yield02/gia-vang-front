@@ -1,70 +1,92 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tỉ giá vàng</title>
-    <script
-      src="/lib/chart.min.js"
-      integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="/lib/tailwindcss.js"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          maxWidth: {
-            sm: "540px",
-            md: "720px",
-            lg: "960px",
-            xl: "1140px",
-            xxl: "1320px",
-          },
-          screens: {
-            sm: "576px",
-            md: "768px",
-            lg: "992px",
-            xl: "1200px",
-            xxl: "1400px",
-          },
-          extend: {},
-        },
-      };
-    </script>
-  </head>
-  <body>
-    <nav
-      class="fixed backdrop-blur-lg bg-white/75 shadow-sm inset-x-0 px-3 top-0 z-10"
-    >
-      <div class="flex items-center justify-center h-14">
-        <div class="flex items-center">
-          <a href="/" class="text-2xl font-medium pr-3">goldprice</a>
-        </div>
-      </div>
-    </nav>
-    <main
-      class="mt-16 px-2 md:px-0 2xl:max-w-2xl xl:max-w-xl lg:max-w-lg md:max-w-md sm:max-w-sm mx-auto"
-    >
-      <div>
-        <form class="grid grid-cols-12 w-full gap-x-4 px-3 py-5">
-          <select
-            class="col-span-3 focus:outline-none h-12 w-full border focus:border-[3px] rounded-md p-2 focus:border-blue-500"
-            name="location"
-          >
-            <option>Hồ Chí Minh</option>
-            <option>Cần Thơ</option>
-          </select>
-          <select
-            class="col-span-3 focus:outline-none h-12 w-full border focus:border-[3px] rounded-md p-2 focus:border-blue-500"
-            name="type"
-          >
-            <option>SCJ</option>
-            <option>PNJ</option>
-          </select>
-        </form>
-      </div>
-    </main>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tỉ giá vàng</title>
+        <script
+            src="/lib/chart.min.js"
+            integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script src="/lib/tailwindcss.js"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    maxWidth: {
+                        sm: '540px',
+                        md: '720px',
+                        lg: '960px',
+                        xl: '1140px',
+                        xxl: '1320px',
+                    },
+                    screens: {
+                        sm: '576px',
+                        md: '768px',
+                        lg: '992px',
+                        xl: '1200px',
+                        xxl: '1400px',
+                    },
+                    extend: {},
+                },
+            };
+        </script>
+    </head>
+    <body>
+        <nav class="fixed backdrop-blur-lg bg-white/75 shadow-sm inset-x-0 px-3 top-0 z-10">
+            <div class="flex items-center justify-center h-14">
+                <div class="flex items-center">
+                    <a href="/" class="text-2xl font-medium pr-3">goldprice</a>
+                </div>
+            </div>
+        </nav>
+        <main class="mt-16 px-2 md:px-0 2xl:max-w-2xl xl:max-w-xl lg:max-w-lg md:max-w-md sm:max-w-sm mx-auto">
+            <div>
+                <form class="grid grid-cols-12 w-full gap-x-4 px-3 py-5">
+                    <select
+                        class="col-span-3 focus:outline-none h-12 w-full border focus:border-[3px] rounded-md p-2 focus:border-blue-500"
+                        name="location"
+                    >
+                        <option>Hồ Chí Minh</option>
+                        <option>Cần Thơ</option>
+                    </select>
+                    <select
+                        class="col-span-3 focus:outline-none h-12 w-full border focus:border-[3px] rounded-md p-2 focus:border-blue-500"
+                        name="type"
+                    >
+                        <option>SCJ</option>
+                        <option>PNJ</option>
+                    </select>
+                </form>
+
+                <form class="px-3">
+                    <label for="buy_input" class="mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >Giá mua vào</label
+                    >
+                    <input
+                        type="text"
+                        id="buy-input"
+                        pattern="[0-9]+([\.,][0-9]+)?"
+                        class="bg-gray-50 border mb-4 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder=""
+                        required
+                    />
+                    <label for="sell_input" class="mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                        >Giá bán ra</label
+                    >
+                    <input
+                        type="text"
+                        id="sell-input"
+                        pattern="[0-9]+([\.,][0-9]+)?"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder=""
+                        required
+                    />
+                    <button id="save-btn" class="border rounded-md border-slate-300 px-8 py-0.5 mt-4">Lưu</button>
+                </form>
+            </div>
+        </main>
+    </body>
 </html>

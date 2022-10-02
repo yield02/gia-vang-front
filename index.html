@@ -1,88 +1,84 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tỉ giá vàng</title>
-    <script
-      src="lib/chart.min.js"
-      integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="lib/tailwindcss.js"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          maxWidth: {
-            sm: "540px",
-            md: "720px",
-            lg: "960px",
-            xl: "1140px",
-            xxl: "1320px",
-          },
-          screens: {
-            sm: "576px",
-            md: "768px",
-            lg: "992px",
-            xl: "1200px",
-            xxl: "1400px",
-          },
-          extend: {},
-        },
-      };
-    </script>
-  </head>
-  <body>
-    <nav
-      class="fixed backdrop-blur-lg bg-white/75 shadow-sm inset-x-0 px-3 top-0 z-10"
-    >
-      <div class="flex items-center justify-center h-14">
-        <div class="flex items-center">
-          <a href="/" class="text-2xl font-medium pr-3">goldprice</a>
-        </div>
-      </div>
-    </nav>
-    <main
-      class="mt-16 px-2 md:px-0 2xl:max-w-2xl xl:max-w-xl lg:max-w-lg md:max-w-md sm:max-w-sm mx-auto"
-    >
-      <form id="form" class="grid grid-cols-12 w-full gap-4 py-5">
-        <select
-          class="col-span-6 focus:outline-none h-12 w-full border focus:border-[3px] rounded-md p-2 focus:border-blue-500"
-          name="city"
-          id="city"
-        >
-          <option value="TPHCM">Hồ Chí Minh</option>
-          <option value="TPCT">Cần Thơ</option>
-        </select>
-        <select
-          class="col-span-6 focus:outline-none h-12 w-full border focus:border-[3px] rounded-md p-2 focus:border-blue-500"
-          name="type"
-          id="type"
-        >
-          <option value="SCJ">SCJ</option>
-          <option value="PNJ">PNJ</option>
-        </select>
-      </form>
-      <div class="grid grid-cols-12 w-full gap-4">
-        <div class="col-span-6">
-          <h1 class="text-4xl font-medium">Giá vàng hôm nay</h1>
-          <div id="gold-brand"></div>
-          <div>
-            <span class="text-2xl text-green-500">Mua vào:</span>
-            <span id="price-buy" class="text-2xl"></span>
-          </div>
-          <div>
-            <span class="text-2xl text-red-500">Bán ra:</span>
-            <span id="price-sell" class="text-2xl"></span>
-          </div>
-        </div>
-        <div class="col-span-6">
-          <canvas id="myChart" width="400" height="400"></canvas>
-        </div>
-      </div>
-    </main>
-  </body>
-  <script type="text/javascript" src="scripts.js"></script>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tỉ giá vàng</title>
+        <script
+            src="lib/chart.min.js"
+            integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script src="lib/tailwindcss.js"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    maxWidth: {
+                        sm: '540px',
+                        md: '720px',
+                        lg: '960px',
+                        xl: '1140px',
+                        xxl: '1320px',
+                    },
+                    screens: {
+                        sm: '576px',
+                        md: '768px',
+                        lg: '992px',
+                        xl: '1200px',
+                        xxl: '1400px',
+                    },
+                    extend: {},
+                },
+            };
+        </script>
+    </head>
+    <body>
+        <nav class="fixed backdrop-blur-lg bg-white/75 shadow-sm inset-x-0 px-3 top-0 z-10">
+            <div class="flex items-center justify-center h-14">
+                <div class="flex items-center">
+                    <a href="/" class="text-2xl font-medium pr-3">goldprice</a>
+                </div>
+            </div>
+        </nav>
+        <main class="mt-16 px-2 md:px-0 2xl:max-w-2xl xl:max-w-xl lg:max-w-lg md:max-w-md sm:max-w-sm mx-auto">
+            <form id="form" class="grid grid-cols-12 w-full gap-4 py-5">
+                <select
+                    class="col-span-6 focus:outline-none h-12 w-full border focus:border-[3px] rounded-md p-2 focus:border-blue-500"
+                    name="city"
+                    id="city"
+                >
+                    <option value="TPHCM">Hồ Chí Minh</option>
+                    <option value="TPCT">Cần Thơ</option>
+                </select>
+                <select
+                    class="col-span-6 focus:outline-none h-12 w-full border focus:border-[3px] rounded-md p-2 focus:border-blue-500"
+                    name="type"
+                    id="type"
+                >
+                    <option value="SCJ">SCJ</option>
+                    <option value="PNJ">PNJ</option>
+                </select>
+            </form>
+            <div class="grid grid-cols-12 w-full gap-4">
+                <div class="col-span-6">
+                    <h1 class="text-4xl font-medium">Giá vàng hôm nay</h1>
+                    <div id="gold-brand"></div>
+                    <div>
+                        <span class="text-2xl text-green-500">Mua vào:</span>
+                        <span id="price-buy" class="text-2xl"></span>
+                    </div>
+                    <div>
+                        <span class="text-2xl text-red-500">Bán ra:</span>
+                        <span id="price-sell" class="text-2xl"></span>
+                    </div>
+                </div>
+                <div class="col-span-6">
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </main>
+    </body>
+    <script type="text/javascript" src="scripts.js"></script>
 </html>
